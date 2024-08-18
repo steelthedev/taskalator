@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:taskalator/components/app_text_field.dart';
 import 'package:taskalator/components/form_xl_button.dart';
 import 'package:taskalator/components/social_bar.dart';
+import 'package:taskalator/pages/auth/login_page.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
 
-  const LoginPage({super.key, required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   @override
@@ -26,10 +27,11 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Hello, again",
+                "Create an account",
                 style: TextStyle(
                   fontFamily: "Sofia",
                   fontSize: 30,
+                  fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
               ),
@@ -55,23 +57,13 @@ class _LoginPageState extends State<LoginPage> {
               // forgot password text
 
               const SizedBox(
-                height: 15,
+                height: 10,
               ),
-              const Center(
-                child: Text(
-                  "Forgot password?",
-                  style: TextStyle(
-                      color: Colors.black, fontFamily: "Sofia", fontSize: 18),
-                ),
-              ),
-              const SizedBox(
-                height: 18,
-              ),
-              // Login button
+              // Register button
 
               FormLargeButton(
                 onTap: () {},
-                text: "Sign In",
+                text: "Sign up",
               ),
               const SizedBox(
                 height: 15,
@@ -97,15 +89,28 @@ class _LoginPageState extends State<LoginPage> {
                   color: Theme.of(context).colorScheme.tertiary,
                   size: 25,
                 ),
-                text: "Sign in with Google",
+                text: "Sign up with Google",
               ),
               const SizedBox(
                 height: 10,
               ),
 
+              Center(
+                child: Text(
+                  "By sign in, accept the terms of service, Guidelines and have read Privacy Policy.",
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.tertiary,
+                    fontSize: 14,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
-                  "Dont have an account?",
+                  "Already have an account?",
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.tertiary,
                     fontSize: 14,
@@ -114,12 +119,22 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   width: 3,
                 ),
-                Text(
-                  "sign up",
-                  style: TextStyle(
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()));
+                  },
+                  child: Text(
+                    "sign in",
+                    style: TextStyle(
                       color: Theme.of(context).colorScheme.primary,
-                      fontSize: 15),
-                )
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
               ])
             ],
           ),

@@ -22,7 +22,7 @@ class AppTextField extends StatelessWidget {
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(30),
+          contentPadding: const EdgeInsets.all(25),
           prefixIcon: icon,
           prefixIconColor: Theme.of(context).colorScheme.tertiary,
           hintText: hintText,
